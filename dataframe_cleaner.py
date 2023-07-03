@@ -6,7 +6,7 @@
 
 import pandas as pd
 import os
-import pickle
+import xlsxwriter
 
 
 # In[2]:
@@ -42,12 +42,11 @@ products['url'] = 'https://centralsquare.dailytable.org' + products['url']
 products = products.drop(products[products['price'] == 999.00].index)
 
 
-# In[15]:
+# In[6]:
 
 
 #correct brands
 brands = {brand.replace('\n', '') for brand in open('brands.txt', 'r').readlines()}
-
 for brand in brands:
     products.loc[products['name'].str.contains(brand), 'brand'] = brand
     products['name'] = products['name'].map(lambda x: x.replace(brand, ''))
@@ -56,8 +55,17 @@ for brand in brands:
 # In[7]:
 
 
-#export to cleaned folder
-products.to_csv(folder+'_cleaned/'+csv_name, index=False)
+#shorten excessive category names
+products.loc[products['category'] == 'Canned Beans, Fruits & Vegetables', 'category'] = 'Canned Beans, Fruit & Veg'
+products.loc[products['category'] == 'Salad Dressings, Sauces & Condiments', 'category'] = 'Dressings, Sauces & Condiments'
+
+
+# In[8]:
+
+
+#sort and export to cleaned folder
+products = products.sort_values(by=['category'])
+products.to_csv(folder + '_cleaned/' + csv_name, index=False)
 
 
 # In[ ]:
