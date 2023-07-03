@@ -22,7 +22,7 @@ def get_sublinks(scraper_link, preface_link, selector):
         sublink = a.get('href') #retrieve link attribute
         if sublink is not None and selector in sublink:
             #ignore some product categories
-            if all(cat not in sublink for cat in {'prepared', 'beverages', 'household'}):
+            if all(cat not in sublink for cat in {'prepared', 'beverages', 'household', 'spice'}):
                 sublinks.add(preface_link+sublink)
     return sublinks
 
@@ -62,7 +62,6 @@ if __name__ == '__main__':
         num_pages = max(len(get_sublinks(category_link, category_link, 'page=')), 1)
         products = pd.concat([products, get_products(category_link, num_pages)])
     #save to csv
-    products = products.reset_index(drop=True)
     date = datetime.datetime.now()
     date = date.strftime('%m_%d_%Y')
-    products.to_csv('product_dataframes/'+date+'.csv')
+    products.to_csv('product_dataframes/'+date+'.csv', index=False)
