@@ -62,7 +62,6 @@ if __name__ == '__main__':
         num_pages = max(len(get_sublinks(category_link, category_link, 'page=')), 1)
         products = pd.concat([products, get_products(category_link, num_pages)])
     #save to csv
-    products = products[['category', 'title', 'brand', 'price', 'mode', 'product_price_units', 'productPageUrl']]
     products = products.reset_index(drop=True)
     date = datetime.datetime.now()
     date = date.strftime('%m_%d_%Y')
