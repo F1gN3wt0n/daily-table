@@ -1,0 +1,74 @@
+/*
+  colors:
+    dark brown: #4a3728
+    light green: #f1f9ec
+    green-brown: #6b6b47
+    dark green: #013220
+*/
+
+/* general */
+body {
+  background-color: white;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+h1 {
+  padding: 22px 0 0 0;
+  font-size: 27px;
+  font-weight: normal;
+  color: #4a3728;
+}
+
+main {
+  padding: 7px;
+  color: #6b6b47;
+  font-size: 15px;
+  margin: auto;
+  width: 711px;
+}
+
+nav {
+  width: 666px;
+  display: inline-block;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 9px;
+  color: #6b6b47;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  background-color: #f1f9ec;
+  padding: 22px;
+  margin: 17px;
+  border-radius: 17px;
+}
+
+li:hover {
+  background-color: #e2f3d8;
+  transform: scale(1.025);
+  transition: background-color 0.3s;
+}
+
+a:link {
+  color: #4a3728;
+  text-decoration: none;
+}
+
+a:hover, a:visited {
+  color: #013220;
+}
+
+a.button {
+  display: block;
+}
+
+/* dataframe */
